@@ -1,10 +1,13 @@
+//apiClient.ts
+
 import request from 'superagent'
-import { Welcome } from '../models/welcome.ts'
 
-const serverURL = '/api/v1'
+const activityURL = 'http://www.boredapi.com/api/activity/'
 
-// *** EXAMPLE ***
-export function getWelcome(): Promise<Welcome> {
-  return request.get(`${serverURL}/welcome`).then((response) => response.body)
+// bored API activities
+
+export async function getActivityApi() {
+  const response = await request.get(activityURL)
+  console.log(response.body)
+  return response.body
 }
-// ***   ***   ***

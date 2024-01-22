@@ -1,21 +1,10 @@
-import { useState, useEffect } from 'react'
+import Activities from './Activities.tsx'
 
-import { getWelcome } from '../apiClient.ts'
-
-function App() {
-  const [welcomeStatement, setWelcomeStatement] = useState('')
-
-  useEffect(() => {
-    getWelcome()
-      .then((res) => {
-        setWelcomeStatement(res.statement)
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
-  })
-
-  return <h1>{welcomeStatement}</h1>
+export default function App() {
+  return (
+    <>
+      <h1>Bored?</h1>
+      <Activities />
+    </>
+  )
 }
-
-export default App
