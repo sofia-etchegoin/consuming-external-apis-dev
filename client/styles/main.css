@@ -1,0 +1,18 @@
+/* styles.css */
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 10px;
+}
+
+.bored {
+  text-align: center;
+  margin: 20px;
+}
+
+.activity {
+  margin: 20px;
+}
