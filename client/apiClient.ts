@@ -8,6 +8,5 @@ const activityURL = 'http://www.boredapi.com/api/activity/'
 
 export async function getActivityApi() {
   const response = await request.get(activityURL)
-  console.log(response.body)
   return response.body
 }

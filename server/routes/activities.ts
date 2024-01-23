@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
   try {
     const activity = await getActivityApi()
     res.json(activity)
-    console.log(activity)
   } catch (error) {
     if (error instanceof Error) {
       res.status(500).send((error as Error).message)

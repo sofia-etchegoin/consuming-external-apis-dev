@@ -1,6 +1,6 @@
 //Activities.tsx
 import { getActivityApi } from '../apiClient.ts'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 
 export default function Activities() {
   const {
@@ -12,6 +12,12 @@ export default function Activities() {
     queryFn: getActivityApi,
   })
 
+  const queryClient = useQueryClient()
+
+  const handleClick = () => {
+    queryClient.invalidateQueries({ queryKey: ['activity'] })
+  }
+
   if (isLoading) {
     return <p>Loading...</p>
   }
@@ -22,7 +28,7 @@ export default function Activities() {
 
   return (
     <>
-      <h2>Try this!</h2>
+      <button onClick={handleClick}>Try this!</button>
       {activity && (
         <div>
           <p>{activity.activity}</p>
