@@ -1,22 +1,33 @@
+//Activities.tsx
 import { getActivityApi } from '../apiClient.ts'
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 export default function Activities() {
-  const [activity, setActivity] = useState(null)
+  const {
+    data: activity,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['activity'],
+    queryFn: getActivityApi,
+  })
 
-  useEffect(() => {
-    // Fetch activity when component mounts
-    const fetchData = async () => {
-      const response = await getActivityApi()
-      setActivity(response)
-    }
-    fetchData()
-  }, [])
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+
+  if (isError) {
+    return <p>Error fetching data</p>
+  }
 
   return (
     <>
       <h2>Try this!</h2>
-      {activity ? <p>{activity.activity}</p> : <p>Loading...</p>}
+      {activity && (
+        <div>
+          <p>{activity.activity}</p>
+        </div>
+      )}
     </>
   )
 }
