@@ -20,7 +20,7 @@ export default function Activities() {
   }
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <p>Loading an activity...</p>
   }
 
   if (isError) {
